@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+*.log
+
+# Sensitive info
+config.yaml
+
+# Project specific
+logs/
+history/
+extension/dist/
+extension/node_modules/
+.DS_Store

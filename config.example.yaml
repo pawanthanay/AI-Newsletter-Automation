@@ -1,0 +1,107 @@
+# ============================================================
+# AI Newsletter Configuration (Template)
+# ============================================================
+
+# X (Twitter) accounts to follow for AI updates
+accounts:
+  - OpenAI
+  - AndrewYNg
+  - kaboroflows
+  - ylecun
+  - GaryMarcus
+  - _jasonwei
+  - GoogleDeepMind
+  - hardmaru
+  - huggingface
+  - LangChainAI
+
+# Email configuration
+email:
+  sender: "your-email@example.com"
+  receiver: "recipient-email@example.com"
+  # Generate App Password: Google Account → Security → 2-Step Verification → App Passwords
+  app_password: "YOUR_APP_PASSWORD_HERE"
+  subject: "☀️ Your Daily AI Updates — {date}"
+
+# Schedule configuration
+schedule:
+  time: "08:00"          # 24hr format, IST
+  timezone: "Asia/Kolkata"
+  retry_attempts: 3
+  retry_delay_minutes: 15
+
+# AI filtering keywords (posts must match at least one)
+keywords:
+  - AI
+  - artificial intelligence
+  - LLM
+  - large language model
+  - GPT
+  - GenAI
+  - generative AI
+  - machine learning
+  - deep learning
+  - neural network
+  - transformer
+  - fine-tuning
+  - RAG
+  - retrieval augmented
+  - agents
+  - agentic
+  - OpenAI
+  - Anthropic
+  - Claude
+  - Gemini
+  - Mistral
+  - Llama
+  - open source model
+  - embedding
+  - vector database
+  - prompt engineering
+  - diffusion model
+  - computer vision
+  - NLP
+  - reinforcement learning
+  - RLHF
+  - multimodal
+  - reasoning
+  - benchmark
+  - SOTA
+  - state of the art
+
+# Content to exclude
+exclude_keywords:
+  - giveaway
+  - follow me
+  - subscribe to my
+  - like and retweet
+  - dm me
+  - buy now
+  - discount code
+  - affiliate link
+
+# X API configuration (optional — leave blank to use scraping fallback)
+x_api:
+  bearer_token: "YOUR_BEARER_TOKEN_HERE"
+  api_key: ""
+  api_secret: ""
+  access_token: ""
+  access_token_secret: ""
+
+# Scraping configuration (used when API is unavailable)
+scraping:
+  use_nitter: true
+  nitter_instances:
+    - "https://nitter.net"
+    - "https://nitter.cz"
+    - "https://nitter.pw"
+  rate_limit_delay: 2    # seconds between requests
+  max_posts_per_account: 50
+
+# Newsletter settings
+newsletter:
+  max_items_per_section: 5
+  top_pick_enabled: true
+  dark_mode: true
+  include_media: true
+  history_days: 7        # days to track for deduplication

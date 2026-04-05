@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Daily AI Brief",
+  "version": "1.0.0",
+  "description": "On-demand AI Newsletter generation and email delivery.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*"
+  ]
+}

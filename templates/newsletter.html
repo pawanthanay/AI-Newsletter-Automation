@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily AI Brief</title>
+</head>
+<body style="margin: 0; padding: 0;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+             background-color: {{ c.bg }}; color: {{ c.text_primary }};
+             -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+
+    <div style="max-width: 640px; margin: 0 auto; padding: 20px 16px;">
+
+        <!-- HEADER -->
+        <div style="text-align: center; padding: 40px 20px 32px; margin-bottom: 28px;">
+            <div style="display: inline-block;
+                        background: linear-gradient(135deg, #6c5ce7, #00cec9);
+                        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                        background-clip: text; font-size: 14px; font-weight: 700;
+                        letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">
+                Intelligence Report
+            </div>
+            <h1 style="margin: 8px 0 12px; font-size: 32px; font-weight: 800;
+                       color: {{ c.text_primary }}; letter-spacing: -0.5px; line-height: 1.2;">
+                AI Strategic Briefing
+            </h1>
+            <p style="margin: 0; color: {{ c.text_secondary }}; font-size: 15px;">
+                {{ date }} &middot; {{ total_items }} curated updates
+            </p>
+            <div style="width: 60px; height: 3px; margin: 20px auto 0;
+                        background: linear-gradient(90deg, #6c5ce7, #00cec9); border-radius: 2px;"></div>
+        </div>
+
+        <!-- TOP PICK -->
+        {% if top_pick %}
+        <div style="margin-bottom: 28px; background: {{ c.top_pick_bg }};
+                    border: 2px solid {{ c.top_pick_border }}; border-radius: 12px; overflow: hidden;">
+            <div style="padding: 20px 24px;">
+                <div style="margin-bottom: 14px;">
+                    <span style="background: linear-gradient(135deg, #6c5ce7, #00cec9);
+                                color: white; padding: 4px 14px; border-radius: 20px; font-size: 12px;
+                                font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">
+                        &#11088; Top Pick of the Day
+                    </span>
+                </div>
+                <p style="margin: 0 0 12px 0; color: {{ c.text_primary }};
+                          font-size: 16px; line-height: 1.6; font-weight: 500;">
+                    {{ top_pick.summary }}
+                </p>
+
+                {% if top_pick.media_urls %}
+                <div style="margin-top: 12px; margin-bottom: 20px;">
+                    <img src="{{ top_pick.media_urls[0] }}" alt="Top pick media"
+                         style="max-width: 100%; border-radius: 8px; height: auto; border: 1px solid {{ c.divider }};" />
+                </div>
+                {% endif %}
+                <div>
+                    <span style="color: {{ c.accent_light }}; font-size: 14px; font-weight: 600;">
+                        {{ top_pick.handle }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <span style="color: {{ c.text_secondary }}; font-size: 13px;">
+                        &#10084;&#65039; {{ top_pick.likes }} &nbsp; &#128260; {{ top_pick.retweets }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <a href="{{ top_pick.url }}" target="_blank"
+                       style="background: linear-gradient(135deg, #6c5ce7, #00cec9);
+                              color: white; text-decoration: none; padding: 6px 18px; border-radius: 20px;
+                              font-size: 13px; font-weight: 600;">
+                        Read Post &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- CONTENT SECTIONS -->
+        {% for section in sections %}
+        <div style="margin-bottom: 28px; background: {{ c.card_bg }};
+                    border: 1px solid {{ c.card_border }}; border-radius: 12px; overflow: hidden;">
+
+            <!-- Section Header -->
+            <div style="padding: 18px 20px; border-bottom: 1px solid {{ c.divider }};
+                        background: linear-gradient(135deg, {{ c.card_bg }}, {{ c.tag_bg }});">
+                <h2 style="margin: 0; font-size: 18px; color: {{ c.text_primary }};
+                           font-weight: 700; letter-spacing: -0.3px;">
+                    {{ section.emoji }} {{ section.title }}
+                </h2>
+            </div>
+
+            <!-- Posts -->
+            {% for post in section.posts %}
+            <div style="padding: 16px 20px; border-bottom: 1px solid {{ c.divider }};">
+                <p style="margin: 0 0 8px 0; color: {{ c.text_primary }};
+                          font-size: 15px; line-height: 1.5;">
+                    {{ post.summary }}
+                </p>
+                <div>
+                    <span style="color: {{ c.accent_light }}; font-size: 13px; font-weight: 600;">
+                        {{ post.handle }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <span style="color: {{ c.text_secondary }}; font-size: 12px;">
+                        {{ post.timestamp }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <span style="color: {{ c.text_secondary }}; font-size: 12px;">
+                        &#10084;&#65039; {{ post.likes }} &nbsp; &#128260; {{ post.retweets }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <a href="{{ post.url }}" target="_blank"
+                       style="color: {{ c.link_color }}; text-decoration: none; font-size: 13px; font-weight: 500;">
+                        Read more &rarr;
+                    </a>
+                </div>
+
+                {% if post.media_urls %}
+                <div style="margin-top: 12px;">
+                    <img src="{{ post.media_urls[0] }}" alt="Post media"
+                         style="max-width: 100%; border-radius: 8px; height: auto;" />
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <!-- FOOTER -->
+        <div style="text-align: center; padding: 40px 20px; margin-top: 32px;
+                    border-top: 1px solid {{ c.divider }};">
+            <p style="margin: 0 0 4px; color: {{ c.text_primary }}; font-size: 14px; font-weight: 600; letter-spacing: 0.5px;">
+                EXECUTIVE INTELLIGENCE HUB
+            </p>
+            <p style="margin: 0 0 24px; color: {{ c.text_secondary }}; font-size: 12px; font-style: italic;">
+                Strategic insights prioritized and contextualized daily.
+            </p>
+            
+            <div style="padding-top: 24px; margin-top: 24px;">
+                <p style="margin: 0; color: {{ c.text_secondary }}; font-size: 11px; opacity: 0.8; line-height: 1.6;">
+                    You are receiving this intelligence report as part of your curated AI subscription.<br>
+                    To manage your delivery preferences, please update your configuration profile.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
