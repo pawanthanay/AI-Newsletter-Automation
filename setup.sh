@@ -18,8 +18,21 @@ echo "║     🤖 AI Newsletter Bot — Setup             ║"
 echo "╚══════════════════════════════════════════════╝"
 echo ""
 
+# Configuration check
+echo "⚙️  Checking configuration..."
+if [ ! -f "$SCRIPT_DIR/config.yaml" ]; then
+    if [ -f "$SCRIPT_DIR/config.example.yaml" ]; then
+        cp "$SCRIPT_DIR/config.example.yaml" "$SCRIPT_DIR/config.yaml"
+        echo "   ✅ Generated config.yaml from template (don't forget to add your keys!)"
+    else
+        echo "   ❌ config.yaml and config.example.yaml missing!"
+        exit 1
+    fi
+else
+    echo "   ✅ config.yaml found"
+fi
+
 # Check Python
-echo "🔍 Checking Python installation..."
 if ! command -v $PYTHON &> /dev/null; then
     echo "❌ Python3 not found. Please install Python 3.8+"
     exit 1
@@ -73,12 +86,13 @@ echo ""
 echo "════════════════════════════════════════════════"
 echo "✅ Setup complete!"
 echo ""
-echo "Next steps:"
-echo "  1. Edit config.yaml with your Gmail credentials"
-echo "  2. Run demo:       python main.py --demo"
-echo "  3. Send test:      python main.py --test-email"
-echo "  4. Run once:       python main.py"
-echo "  5. Start daily:    python main.py --schedule"
-echo "  6. Setup cron:     ./setup_cron.sh"
-echo "════════════════════════════════════════════════"
+echo "Next steps:
+  1. 🔑 IMPORTANT: Open config.yaml and add your Gmail App Password & X tokens
+  2. 🧪 Run demo:       python main.py --demo
+  3. 📧 Send test:      python main.py --test-email
+  4. 🚀 Run once:       python main.py
+  5. ⏰ Start daily:    python main.py --schedule
+  6. 📅 Setup cron:     ./setup_cron.sh
+════════════════════════════════════════════════
+══════"
 echo ""
