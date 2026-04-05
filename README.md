@@ -20,63 +20,48 @@ A fully automated pipeline that fetches AI-related posts from X (Twitter), curat
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Installation & Setup
 
-### 1. Setup
+Follow these 4 simple steps to get the bot running on your machine:
 
+### 1️⃣ Clone & Initialize
+Run the automated setup script to install dependencies and prepare your environment:
 ```bash
+git clone https://github.com/pawanthanay/AI-Newsletter-Automation.git
+cd AI-Newsletter-Automation
 chmod +x setup.sh && ./setup.sh
 ```
 
-### 2. Configure
+### 2️⃣ Add Your Secret Keys
+The setup script creates a `config.yaml` from a template. You must fill in your own credentials:
+1.  Open `config.yaml` in your code editor.
+2.  **Email**: Generate a [Gmail App Password](https://myaccount.google.com/security) and add it to `app_password`.
+3.  **X (Twitter) API**: (Optional) Add your `bearer_token` from [developer.x.com](https://developer.x.com).
 
-1. Copy the example configuration:
-   ```bash
-   cp config.example.yaml config.yaml
-   ```
-2. Edit `config.yaml` with your details:
-
-```yaml
-# Add/remove X (Twitter) accounts to follow
-accounts:
-  - OpenAI
-  - AndrewYNg
-  - GoogleDeepMind
-
-# Your Gmail credentials
-email:
-  sender: "your_email@gmail.com"
-  receiver: "your_email@gmail.com"
-  app_password: "xxxx xxxx xxxx xxxx"   # Gmail App Password
-```
-
-### 3. Gmail App Password
-
-> ⚠️ You must use a **Gmail App Password**, not your regular password.
-
-1. Go to [Google Account → Security](https://myaccount.google.com/security)
-2. Enable **2-Step Verification**
-3. Go to **App Passwords** → Generate new
-4. Copy the 16-character password into `config.yaml`
-
-### 4. Run
-
+### 3️⃣ Start the Backend Server
+To use the Chrome extension, the bridge server must be running:
 ```bash
-# Activate virtual environment
-source venv/bin/activate
-
-# Demo mode (no API needed)
-python main.py --demo
-
-# Run once
-python main.py
-
-# Start daily scheduler
-python main.py --schedule
-
-# Preview newsletter without sending
-python main.py --preview
+./start_server.sh
 ```
+*The server runs at `http://localhost:5000`.*
+
+### 4️⃣ Load the Chrome Extension
+1.  Open Chrome and navigate to `chrome://extensions/`.
+2.  Turn **ON** the "Developer mode" switch (top right).
+3.  Click **Load unpacked** (top left).
+4.  Select the `extension/` folder inside this project directory.
+5.  **You're all set!** Click the AI icon in your browser to trigger a newsletter anytime.
+
+---
+
+## 📖 Advanced Usage
+
+| Command | Description |
+|---------|-------------|
+| `python main.py --demo` | Generate a newsletter with fake data (no API needed) |
+| `python main.py --preview` | Build the HTML but don't send the email |
+| `python main.py --schedule` | Run the auto-scheduler (stays active) |
+| `./setup_cron.sh` | Install as a background system task (recommended) |
 
 ---
 
