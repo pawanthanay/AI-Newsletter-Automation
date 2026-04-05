@@ -1,9 +1,14 @@
 # 🤖 AI Newsletter Bot
 
-A fully automated pipeline that fetches AI-related posts from X (Twitter), curates them into a beautiful newsletter, and delivers it to your Gmail inbox every morning — so you stay updated without opening social media.
+A fully automated pipeline that fetches AI-related posts from X (Twitter), curates them into a beautiful newsletter, and delivers it to your Gmail inbox every morning.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
-![License](https://img.shields.io/badge/License-MIT-green)
+---
+
+## 👀 Preview
+
+| **Chrome Extension** | **Newsletter Design** |
+|:---:|:---:|
+| ![Extension Preview](assets/extension_preview.png) | ![Newsletter Preview](assets/newsletter_preview.png) |
 
 ---
 
