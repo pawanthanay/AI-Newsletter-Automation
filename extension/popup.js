@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessage = document.getElementById('statusMessage');
 
     // Check if server is reachable on load
-    fetch('http://127.0.0.1:5000/ping')
+    fetch('http://127.0.0.1:5001/ping')
         .then(res => res.json())
         .catch(() => {
             showStatus("Local API Server not running. Run start_server.sh", "error");
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Trigger the local python API
-            const response = await fetch('http://127.0.0.1:5000/generate', {
+            const response = await fetch('http://127.0.0.1:5001/generate', {
                 method: 'GET',
             });
             

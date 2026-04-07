@@ -43,30 +43,36 @@ The setup script creates a `config.yaml` from a template. You must fill in your 
 2.  **Email**: Generate a [Gmail App Password](https://myaccount.google.com/security) and add it to `app_password`.
 3.  **X (Twitter) API**: (Optional) Add your `bearer_token` from [developer.x.com](https://developer.x.com).
 
-### 3️⃣ Start the Backend Server
-To use the Chrome extension, the bridge server must be running:
+### 3️⃣ Start the API Server (for Chrome Extension)
+The API server allows the extension to trigger the newsletter flow.
+
+**On macOS / Linux:**
 ```bash
+chmod +x start_server.sh
 ./start_server.sh
 ```
-*The server runs at `http://localhost:5000`.*
+
+**On Windows:**
+```cmd
+start_server.bat
+```
+
+*The server runs at `http://localhost:5001`.*
 
 ### 4️⃣ Load the Chrome Extension
 1.  Open Chrome and navigate to `chrome://extensions/`.
-2.  Turn **ON** the "Developer mode" switch (top right).
-3.  Click **Load unpacked** (top left).
-4.  Select the `extension/` folder inside this project directory.
-5.  **You're all set!** Click the AI icon in your browser to trigger a newsletter anytime.
+2.  Enable **Developer mode** (top-right toggle).
+3.  Click **Load unpacked** and select the `extension` folder in this repository.
+4.  The AI Newsletter icon should now appear in your browser (click the puzzle icon to pin it)!
 
----
+### 5️⃣ Automation (Optional)
+**On macOS / Linux (Cron):**
+```bash
+./setup_cron.sh
+```
 
-## 📖 Advanced Usage
-
-| Command | Description |
-|---------|-------------|
-| `python main.py --demo` | Generate a newsletter with fake data (no API needed) |
-| `python main.py --preview` | Build the HTML but don't send the email |
-| `python main.py --schedule` | Run the auto-scheduler (stays active) |
-| `./setup_cron.sh` | Install as a background system task (recommended) |
+**On Windows:**
+Use **Task Scheduler** to run `python main.py` daily at your preferred time.
 
 ---
 

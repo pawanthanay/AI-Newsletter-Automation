@@ -65,7 +65,7 @@ def ping():
 if __name__ == '__main__':
     logger.info("==================================================")
     logger.info("🤖 AI Newsletter Local API Server Starting")
-    logger.info("🌐 Listening on all interfaces (0.0.0.0:5000)")
+    logger.info("🌐 Listening on all interfaces (0.0.0.0:5001)")
     logger.info("==================================================")
     # Run server on all interfaces to ensure reachability
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5001, debug=False)
