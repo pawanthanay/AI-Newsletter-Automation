@@ -1,4 +1,6 @@
-# 🤖 AI Newsletter Bot
+# 🤖 AI Newsletter Bot — Daily Curated AI Updates
+
+[![Demo Video](https://img.shields.io/badge/YouTube-Demo%20Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/NNa2yxBq84g)
 
 A fully automated pipeline that fetches AI-related posts from X (Twitter), curates them into a beautiful newsletter, and delivers it to your Gmail inbox every morning.
 
